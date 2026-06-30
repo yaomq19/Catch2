@@ -57,3 +57,7 @@
 - [2026-06-30 00:00 Asia/Shanghai] Concept 3 progress: learner identified that a callable function/test body must exist in addition to the registration object.
 - [2026-06-30 00:00 Asia/Shanghai] Concept 3 progress: learner correctly identified registration as occurring during executable startup before `main`, not during compilation, CMake configure, or after assertions execute.
 - [2026-06-30 00:00 Asia/Shanghai] Source checkpoint: current code maps `TEST_CASE` to `INTERNAL_CATCH_TESTCASE`, which generates a static test function and a namespace-scope `Catch::AutoReg` object.
+- [2026-06-30 00:00 Asia/Shanghai] Concept 3 progress: learner correctly identified `&TestName` as the function address passed to the invoker.
+- [2026-06-30 00:00 Asia/Shanghai] Concept 3 gap: learner does not yet understand why `AutoReg` must live at namespace scope instead of inside the generated test function.
+- [2026-06-30 00:00 Asia/Shanghai] Concept 3 progress: learner correctly identified that a namespace-scope `Registrar` can be constructed before `main` even if `test()` has not been called.
+- [2026-06-30 00:00 Asia/Shanghai] Concept 3 gap persists: learner is not yet able to connect local-in-function registration with the runner's need to discover tests before invoking them.
