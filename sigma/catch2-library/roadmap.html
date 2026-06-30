@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch2 学习路线图</title>
+    <style>
+      :root {
+        --bg: #08080c;
+        --surface: rgba(255, 255, 255, 0.03);
+        --surface-hover: rgba(255, 255, 255, 0.08);
+        --border: rgba(255, 255, 255, 0.06);
+        --text: #ededef;
+        --text-secondary: rgba(255, 255, 255, 0.55);
+        --text-tertiary: rgba(255, 255, 255, 0.3);
+        --accent-1: #06b6d4;
+        --accent-2: #34d399;
+        --accent-gradient: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+        --green: #34d399;
+        --amber: #fbbf24;
+        --red: #f87171;
+        --font-mono: "SF Mono", "Fira Code", "JetBrains Mono", monospace;
+        --font-sans: -apple-system, "Inter", system-ui, sans-serif;
+        --radius: 12px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 18% 10%, rgba(6, 182, 212, 0.18), transparent 30%),
+          radial-gradient(circle at 84% 22%, rgba(52, 211, 153, 0.12), transparent 32%),
+          radial-gradient(circle at 50% 90%, rgba(245, 158, 11, 0.08), transparent 28%),
+          var(--bg);
+        color: var(--text);
+        font-family: var(--font-sans);
+      }
+
+      main {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 40px 20px 56px;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 24px;
+        align-items: center;
+        margin-bottom: 32px;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: 34px;
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
+      .gradient {
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chip {
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 6px 10px;
+        color: var(--text-secondary);
+        background: var(--surface);
+        font-size: 12px;
+        backdrop-filter: blur(12px);
+      }
+
+      .ring {
+        position: relative;
+        width: 104px;
+        height: 104px;
+      }
+
+      .ring svg {
+        transform: rotate(-90deg);
+      }
+
+      .ring .label {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        font-family: var(--font-mono);
+        font-size: 20px;
+      }
+
+      .timeline {
+        --mastered-pct: 0%;
+        position: relative;
+        display: grid;
+        gap: 14px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        top: 24px;
+        bottom: 24px;
+        left: 14px;
+        width: 2px;
+        background: linear-gradient(
+          to bottom,
+          var(--green) 0 var(--mastered-pct),
+          var(--border) var(--mastered-pct) 100%
+        );
+      }
+
+      .node {
+        position: relative;
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        gap: 14px;
+        align-items: stretch;
+      }
+
+      .dot {
+        position: relative;
+        z-index: 1;
+        width: 28px;
+        height: 28px;
+        margin-top: 20px;
+        border: 2px solid var(--border);
+        border-radius: 50%;
+        background: var(--bg);
+      }
+
+      .node.active .dot {
+        border-color: var(--accent-1);
+        box-shadow: 0 0 0 8px rgba(6, 182, 212, 0.08);
+        animation: pulse 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+
+      .card {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 16px;
+        background: var(--surface);
+        backdrop-filter: blur(12px);
+        transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
+          border-color 180ms cubic-bezier(0.4, 0, 0.2, 1),
+          background 180ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .card:hover {
+        transform: translateY(-2px);
+        background: var(--surface-hover);
+      }
+
+      .node.active .card {
+        border-color: rgba(6, 182, 212, 0.42);
+      }
+
+      .node.upcoming {
+        opacity: 0.48;
+      }
+
+      .topline {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: start;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.35;
+      }
+
+      .badge {
+        flex: none;
+        border-radius: 999px;
+        padding: 4px 8px;
+        font-size: 11px;
+        font-family: var(--font-mono);
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .badge.active {
+        color: #061014;
+        background: var(--accent-gradient);
+      }
+
+      .desc {
+        margin: 8px 0 12px;
+        color: var(--text-secondary);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .progress {
+        height: 6px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .fill {
+        height: 100%;
+        width: var(--score);
+        border-radius: inherit;
+        background: var(--accent-gradient);
+      }
+
+      footer {
+        margin-top: 26px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 16px;
+        background: var(--surface);
+        color: var(--text-secondary);
+        backdrop-filter: blur(12px);
+      }
+
+      footer strong {
+        color: var(--text);
+      }
+
+      @keyframes pulse {
+        0%, 100% { box-shadow: 0 0 0 6px rgba(6, 182, 212, 0.08); }
+        50% { box-shadow: 0 0 0 12px rgba(6, 182, 212, 0.02); }
+      }
+
+      @media (max-width: 480px) {
+        main {
+          padding: 28px 14px 40px;
+        }
+
+        header {
+          grid-template-columns: 1fr;
+        }
+
+        .ring {
+          width: 88px;
+          height: 88px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg style="position:absolute;width:0;height:0">
+      <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="var(--accent-1)"></stop>
+          <stop offset="100%" stop-color="var(--accent-2)"></stop>
+        </linearGradient>
+      </defs>
+    </svg>
+    <main>
+      <header>
+        <section>
+          <h1><span class="gradient">Catch2</span> 学习路线图</h1>
+          <div class="chips">
+            <span class="chip">目标：会用 + 读源码</span>
+            <span class="chip">基础：C++ 可用，测试经验少</span>
+            <span class="chip">当前：最小测试可执行程序</span>
+          </div>
+        </section>
+        <div class="ring" aria-label="overall progress 10 percent">
+          <svg width="104" height="104" viewBox="0 0 104 104">
+            <circle cx="52" cy="52" r="42" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"></circle>
+            <circle cx="52" cy="52" r="42" fill="none" stroke="url(#gradient)" stroke-width="10" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="238"></circle>
+          </svg>
+          <div class="label">10%</div>
+        </div>
+      </header>
+
+      <section class="timeline" style="--mastered-pct: 9%;">
+        <article class="node mastered">
+          <div class="dot"></div>
+          <div class="card">
+            <div class="topline">
+              <h2>1. 测试意图与失败归因</h2>
+              <span class="badge">90%</span>
+            </div>
+            <p class="desc">区分被测代码、测试代码、第三方库、框架和构建环境，建立失败时的优先排查顺序。</p>
+            <div class="progress"><div class="fill" style="--score:90%"></div></div>
+          </div>
+        </article>
+
+        <article class="node active">
+          <div class="dot"></div>
+          <div class="card">
+            <div class="topline">
+              <h2>2. 最小 Catch2 可执行程序与 CMake 目标</h2>
+              <span class="badge active">20%</span>
+            </div>
+            <p class="desc">理解 `Catch2::Catch2WithMain`、`Catch2::Catch2`、测试二进制和 CTest 发现机制。</p>
+            <div class="progress"><div class="fill" style="--score:20%"></div></div>
+          </div>
+        </article>
+
+        <article class="node upcoming">
+          <div class="dot"></div>
+          <div class="card">
+            <div class="topline">
+              <h2>3. TEST_CASE 与自注册模型</h2>
+              <span class="badge">0%</span>
+            </div>
+            <p class="desc">从使用层理解测试用例如何被发现，再进入宏和注册表源码。</p>
+            <div class="progress"><div class="fill" style="--score:0%"></div></div>
+          </div>
+        </article>
+
+        <article class="node upcoming">
+          <div class="dot"></div>
+          <div class="card">
+            <div class="topline">
+              <h2>4. REQUIRE、CHECK 与断言控制流</h2>
+              <span class="badge">0%</span>
+            </div>
+            <p class="desc">掌握失败是否中止、表达式分解、异常报告和失败信息的来源。</p>
+            <div class="progress"><div class="fill" style="--score:0%"></div></div>
+          </div>
+        </article>
+
+        <article class="node upcoming">
+          <div class="dot"></div>
+          <div class="card">
+            <div class="topline">
+              <h2>5. SECTION 作为执行树</h2>
+              <span class="badge">0%</span>
+            </div>
+            <p class="desc">理解每个叶子 section 都会重新从 `TEST_CASE` 开始执行。</p>
+            <div class="progress"><div class="fill" style="--score:0%"></div></div>
+          </div>
+        </article>
+
+        <article class="node upcoming">
+          <div class="dot"></div>
+          <div class="card">
+            <div class="topline">
+              <h2>6. 标签、过滤和命令行选择</h2>
+              <span class="badge">0%</span>
+            </div>
+            <p class="desc">用标签组织测试，理解隐藏测试、benchmark 标签和命令行筛选。</p>
+            <div class="progress"><div class="fill" style="--score:0%"></div></div>
+          </div>
+        </article>
+
+        <article class="node upcoming">
+          <div class="dot"></div>
+          <div class="card">
+            <div class="topline">
+              <h2>7. Matcher、异常和浮点断言</h2>
+              <span class="badge">0%</span>
+            </div>
+            <p class="desc">学习自然表达式不够用时，该换用哪类断言。</p>
+            <div class="progress"><div class="fill" style="--score:0%"></div></div>
+          </div>
+        </article>
+
+        <article class="node upcoming">
+          <div class="dot"></div>
+          <div class="card">
+            <div class="topline">
+              <h2>8. 给自己的代码设计有价值的测试</h2>
+              <span class="badge">0%</span>
+            </div>
+            <p class="desc">从验证标准库转向验证业务行为、边界条件和错误路径。</p>
+            <div class="progress"><div class="fill" style="--score:0%"></div></div>
+          </div>
+        </article>
+
+        <article class="node upcoming">
+          <div class="dot"></div>
+          <div class="card">
+            <div class="topline">
+              <h2>9. 自定义 main 与 Catch::Session</h2>
+              <span class="badge">0%</span>
+            </div>
+            <p class="desc">理解什么时候让 Catch2 提供 main，什么时候自己控制启动流程。</p>
+            <div class="progress"><div class="fill" style="--score:0%"></div></div>
+          </div>
+        </article>
+
+        <article class="node upcoming">
+          <div class="dot"></div>
+          <div class="card">
+            <div class="topline">
+              <h2>10. 源码导览：宏、注册表、运行上下文、报告器</h2>
+              <span class="badge">0%</span>
+            </div>
+            <p class="desc">把使用层概念映射到 `src/catch2` 下的真实实现。</p>
+            <div class="progress"><div class="fill" style="--score:0%"></div></div>
+          </div>
+        </article>
+
+        <article class="node upcoming">
+          <div class="dot"></div>
+          <div class="card">
+            <div class="topline">
+              <h2>11. 扩展点：监听器、报告器、生成器、benchmark</h2>
+              <span class="badge">0%</span>
+            </div>
+            <p class="desc">最后再学扩展能力，避免一开始就被框架细节分散注意力。</p>
+            <div class="progress"><div class="fill" style="--score:0%"></div></div>
+          </div>
+        </article>
+      </section>
+
+      <footer>
+        <strong>当前任务：</strong>理解 Catch2 v3 作为普通库参与构建时，测试文件、测试 main 和 Catch2 静态库之间的关系。
+      </footer>
+    </main>
+  </body>
+</html>
