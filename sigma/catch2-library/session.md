@@ -11,7 +11,7 @@
 | # | Concept | Prerequisites | Status | Score | Last Reviewed | Review Interval |
 |---|---------|---------------|--------|-------|---------------|-----------------|
 | 1 | Test intent and failure attribution | - | mastered | 90% | 2026-06-30 | 1d |
-| 2 | Minimal Catch2 executable and CMake targets | 1 | in-progress | 20% | - | - |
+| 2 | Minimal Catch2 executable and CMake targets | 1 | in-progress | 75% | - | - |
 | 3 | TEST_CASE and self-registration model | 2 | not-started | - | - | - |
 | 4 | REQUIRE, CHECK, and assertion control flow | 3 | not-started | - | - | - |
 | 5 | SECTION as an execution tree | 3, 4 | not-started | - | - | - |
@@ -37,3 +37,8 @@
 - [2026-06-30 00:00 Asia/Shanghai] Transfer scenario handled: learner correctly identified that `clamp_to_percent(150) == 0` is a wrong test expectation and should be `100`.
 - [2026-06-30 00:00 Asia/Shanghai] Practice completed: learner wrote three boundary assertions for `clamp_to_percent`; logical coverage was correct, with a minor missing-semicolon syntax issue.
 - [2026-06-30 00:00 Asia/Shanghai] Concept 1 mastered. Concept 2 started.
+- [2026-06-30 00:00 Asia/Shanghai] Concept 2 gap: learner does not yet know the difference between `Catch2::Catch2` and `Catch2::Catch2WithMain`.
+- [2026-06-30 00:00 Asia/Shanghai] Concept 2 progress: learner correctly inferred that a test executable without user-provided `main` should link `Catch2::Catch2WithMain`.
+- [2026-06-30 00:00 Asia/Shanghai] Concept 2 gap: learner was unsure which target to link when providing a custom `main` that calls `Catch::Session`.
+- [2026-06-30 00:00 Asia/Shanghai] Concept 2 progress: learner correctly identified that linking a default-main library while also defining `main` would create two `main` definitions and fail to link.
+- [2026-06-30 00:00 Asia/Shanghai] Concept 2 progress: learner correctly chose `Catch2::Catch2` for custom-main tests because `Catch2::Catch2WithMain` would provide a second `main`.

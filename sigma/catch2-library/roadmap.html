@@ -276,12 +276,12 @@
             <span class="chip">当前：最小测试可执行程序</span>
           </div>
         </section>
-        <div class="ring" aria-label="overall progress 10 percent">
+        <div class="ring" aria-label="overall progress 15 percent">
           <svg width="104" height="104" viewBox="0 0 104 104">
             <circle cx="52" cy="52" r="42" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"></circle>
-            <circle cx="52" cy="52" r="42" fill="none" stroke="url(#gradient)" stroke-width="10" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="238"></circle>
+            <circle cx="52" cy="52" r="42" fill="none" stroke="url(#gradient)" stroke-width="10" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="224"></circle>
           </svg>
-          <div class="label">10%</div>
+          <div class="label">15%</div>
         </div>
       </header>
 
@@ -303,10 +303,10 @@
           <div class="card">
             <div class="topline">
               <h2>2. 最小 Catch2 可执行程序与 CMake 目标</h2>
-              <span class="badge active">20%</span>
+              <span class="badge active">75%</span>
             </div>
             <p class="desc">理解 `Catch2::Catch2WithMain`、`Catch2::Catch2`、测试二进制和 CTest 发现机制。</p>
-            <div class="progress"><div class="fill" style="--score:20%"></div></div>
+            <div class="progress"><div class="fill" style="--score:75%"></div></div>
           </div>
         </article>
 
@@ -420,7 +420,7 @@
       </section>
 
       <footer>
-        <strong>当前任务：</strong>理解 Catch2 v3 作为普通库参与构建时，测试文件、测试 main 和 Catch2 静态库之间的关系。
+        <strong>当前任务：</strong>判断自定义 `main` 与 Catch2 默认 `main` 是否能同时存在，并据此选择 CMake target。
       </footer>
     </main>
   </body>
