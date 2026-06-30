@@ -273,19 +273,19 @@
           <div class="chips">
             <span class="chip">目标：会用 + 读源码</span>
             <span class="chip">基础：C++ 可用，测试经验少</span>
-            <span class="chip">当前：最小测试可执行程序</span>
+            <span class="chip">当前：TEST_CASE 自注册</span>
           </div>
         </section>
-        <div class="ring" aria-label="overall progress 15 percent">
+        <div class="ring" aria-label="overall progress 25 percent">
           <svg width="104" height="104" viewBox="0 0 104 104">
             <circle cx="52" cy="52" r="42" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"></circle>
-            <circle cx="52" cy="52" r="42" fill="none" stroke="url(#gradient)" stroke-width="10" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="224"></circle>
+            <circle cx="52" cy="52" r="42" fill="none" stroke="url(#gradient)" stroke-width="10" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="198"></circle>
           </svg>
-          <div class="label">15%</div>
+          <div class="label">25%</div>
         </div>
       </header>
 
-      <section class="timeline" style="--mastered-pct: 9%;">
+      <section class="timeline" style="--mastered-pct: 18%;">
         <article class="node mastered">
           <div class="dot"></div>
           <div class="card">
@@ -298,27 +298,27 @@
           </div>
         </article>
 
-        <article class="node active">
+        <article class="node mastered">
           <div class="dot"></div>
           <div class="card">
             <div class="topline">
               <h2>2. 最小 Catch2 可执行程序与 CMake 目标</h2>
-              <span class="badge active">75%</span>
+              <span class="badge">90%</span>
             </div>
             <p class="desc">理解 `Catch2::Catch2WithMain`、`Catch2::Catch2`、测试二进制和 CTest 发现机制。</p>
-            <div class="progress"><div class="fill" style="--score:75%"></div></div>
+            <div class="progress"><div class="fill" style="--score:90%"></div></div>
           </div>
         </article>
 
-        <article class="node upcoming">
+        <article class="node active">
           <div class="dot"></div>
           <div class="card">
             <div class="topline">
               <h2>3. TEST_CASE 与自注册模型</h2>
-              <span class="badge">0%</span>
+              <span class="badge active">80%</span>
             </div>
             <p class="desc">从使用层理解测试用例如何被发现，再进入宏和注册表源码。</p>
-            <div class="progress"><div class="fill" style="--score:0%"></div></div>
+            <div class="progress"><div class="fill" style="--score:80%"></div></div>
           </div>
         </article>
 
@@ -420,7 +420,7 @@
       </section>
 
       <footer>
-        <strong>当前任务：</strong>判断自定义 `main` 与 Catch2 默认 `main` 是否能同时存在，并据此选择 CMake target。
+        <strong>当前任务：</strong>把真实源码里的 `static void TestName()`、`Catch::AutoReg`、`makeTestInvoker(&TestName)` 连成完整时序。
       </footer>
     </main>
   </body>
