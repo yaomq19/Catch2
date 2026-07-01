@@ -273,19 +273,19 @@
           <div class="chips">
             <span class="chip">目标：会用 + 读源码</span>
             <span class="chip">基础：C++ 可用，测试经验少</span>
-            <span class="chip">当前：TEST_CASE 自注册</span>
+            <span class="chip">当前：标签与筛选</span>
           </div>
         </section>
-        <div class="ring" aria-label="overall progress 25 percent">
+        <div class="ring" aria-label="overall progress 52 percent">
           <svg width="104" height="104" viewBox="0 0 104 104">
             <circle cx="52" cy="52" r="42" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"></circle>
-            <circle cx="52" cy="52" r="42" fill="none" stroke="url(#gradient)" stroke-width="10" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="198"></circle>
+            <circle cx="52" cy="52" r="42" fill="none" stroke="url(#gradient)" stroke-width="10" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="127"></circle>
           </svg>
-          <div class="label">25%</div>
+          <div class="label">52%</div>
         </div>
       </header>
 
-      <section class="timeline" style="--mastered-pct: 18%;">
+      <section class="timeline" style="--mastered-pct: 45%;">
         <article class="node mastered">
           <div class="dot"></div>
           <div class="card">
@@ -310,51 +310,51 @@
           </div>
         </article>
 
-        <article class="node active">
+        <article class="node mastered">
           <div class="dot"></div>
           <div class="card">
             <div class="topline">
               <h2>3. TEST_CASE 与自注册模型</h2>
-              <span class="badge active">80%</span>
+              <span class="badge">92%</span>
             </div>
             <p class="desc">从使用层理解测试用例如何被发现，再进入宏和注册表源码。</p>
-            <div class="progress"><div class="fill" style="--score:80%"></div></div>
+            <div class="progress"><div class="fill" style="--score:92%"></div></div>
           </div>
         </article>
 
-        <article class="node upcoming">
+        <article class="node mastered">
           <div class="dot"></div>
           <div class="card">
             <div class="topline">
               <h2>4. REQUIRE、CHECK 与断言控制流</h2>
-              <span class="badge">0%</span>
+              <span class="badge">90%</span>
             </div>
             <p class="desc">掌握失败是否中止、表达式分解、异常报告和失败信息的来源。</p>
-            <div class="progress"><div class="fill" style="--score:0%"></div></div>
+            <div class="progress"><div class="fill" style="--score:90%"></div></div>
           </div>
         </article>
 
-        <article class="node upcoming">
+        <article class="node mastered">
           <div class="dot"></div>
           <div class="card">
             <div class="topline">
               <h2>5. SECTION 作为执行树</h2>
-              <span class="badge">0%</span>
+              <span class="badge">90%</span>
             </div>
             <p class="desc">理解每个叶子 section 都会重新从 `TEST_CASE` 开始执行。</p>
-            <div class="progress"><div class="fill" style="--score:0%"></div></div>
+            <div class="progress"><div class="fill" style="--score:90%"></div></div>
           </div>
         </article>
 
-        <article class="node upcoming">
+        <article class="node active">
           <div class="dot"></div>
           <div class="card">
             <div class="topline">
               <h2>6. 标签、过滤和命令行选择</h2>
-              <span class="badge">0%</span>
+              <span class="badge active">70%</span>
             </div>
             <p class="desc">用标签组织测试，理解隐藏测试、benchmark 标签和命令行筛选。</p>
-            <div class="progress"><div class="fill" style="--score:0%"></div></div>
+            <div class="progress"><div class="fill" style="--score:70%"></div></div>
           </div>
         </article>
 
@@ -420,7 +420,7 @@
       </section>
 
       <footer>
-        <strong>当前任务：</strong>判断如果注册对象要等测试函数被调用才创建，运行器在调用前能不能先发现这个测试。
+        <strong>当前任务：</strong>理解 Catch2 tag 如何把测试分组，并用命令行表达式选择要运行的测试。
       </footer>
     </main>
   </body>
