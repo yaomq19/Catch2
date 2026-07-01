@@ -15,7 +15,7 @@
 | 3 | TEST_CASE and self-registration model | 2 | mastered | 92% | 2026-07-01 | 1d |
 | 4 | REQUIRE, CHECK, and assertion control flow | 3 | mastered | 90% | 2026-07-01 | 1d |
 | 5 | SECTION as an execution tree | 3, 4 | mastered | 90% | 2026-07-01 | 1d |
-| 6 | Tags, filters, and command-line selection | 3 | in-progress | 70% | - | - |
+| 6 | Tags, filters, and command-line selection | 3 | in-progress | 82% | - | - |
 | 7 | Matchers, exceptions, and floating-point assertions | 4 | not-started | - | - | - |
 | 8 | Designing useful tests for own code | 1, 4, 5 | not-started | - | - | - |
 | 9 | Custom main and Catch::Session | 2, 6 | not-started | - | - | - |
@@ -83,3 +83,4 @@
 - [2026-07-01 00:00 Asia/Shanghai] Concept 6 progress: learner correctly identified that filter `[json]` runs tests tagged `[json]`, selecting tests 1 and 3.
 - [2026-07-01 00:00 Asia/Shanghai] Concept 6 progress: learner correctly identified that filter `[parser][json]` selects only tests that have both tags, selecting test 1.
 - [2026-07-01 00:00 Asia/Shanghai] Concept 6 progress: learner correctly identified that filter `[parser],[writer]` selects the union of parser and writer tests, selecting tests 1, 2, and 3.
+- [2026-07-01 00:00 Asia/Shanghai] Concept 6 progress: learner correctly identified that `[json]~[writer]` selects json tests and excludes writer tests, leaving test 1.
