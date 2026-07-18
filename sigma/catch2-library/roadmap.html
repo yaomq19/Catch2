@@ -273,19 +273,19 @@
           <div class="chips">
             <span class="chip">目标：会用 + 读源码</span>
             <span class="chip">基础：C++ 可用，测试经验少</span>
-            <span class="chip">当前：Matcher / 异常 / 浮点</span>
+            <span class="chip">当前：给自己的代码设计测试</span>
           </div>
         </section>
-        <div class="ring" aria-label="overall progress 55 percent">
+        <div class="ring" aria-label="overall progress 64 percent">
           <svg width="104" height="104" viewBox="0 0 104 104">
             <circle cx="52" cy="52" r="42" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"></circle>
-            <circle cx="52" cy="52" r="42" fill="none" stroke="url(#gradient)" stroke-width="10" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="119"></circle>
+            <circle cx="52" cy="52" r="42" fill="none" stroke="url(#gradient)" stroke-width="10" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="95"></circle>
           </svg>
-          <div class="label">55%</div>
+          <div class="label">64%</div>
         </div>
       </header>
 
-      <section class="timeline" style="--mastered-pct: 55%;">
+      <section class="timeline" style="--mastered-pct: 64%;">
         <article class="node mastered">
           <div class="dot"></div>
           <div class="card">
@@ -358,24 +358,24 @@
           </div>
         </article>
 
-        <article class="node active">
+        <article class="node mastered">
           <div class="dot"></div>
           <div class="card">
             <div class="topline">
               <h2>7. Matcher、异常和浮点断言</h2>
-              <span class="badge active">0%</span>
+              <span class="badge">88%</span>
             </div>
-            <p class="desc">学习自然表达式不够用时，该换用哪类断言。</p>
-            <div class="progress"><div class="fill" style="--score:0%"></div></div>
+            <p class="desc">Approx 处理浮点近似、Matcher 提供语义化失败诊断、REQUIRE_THROWS_AS 家族验证异常行为。</p>
+            <div class="progress"><div class="fill" style="--score:88%"></div></div>
           </div>
         </article>
 
-        <article class="node upcoming">
+        <article class="node active">
           <div class="dot"></div>
           <div class="card">
             <div class="topline">
               <h2>8. 给自己的代码设计有价值的测试</h2>
-              <span class="badge">0%</span>
+              <span class="badge active">0%</span>
             </div>
             <p class="desc">从验证标准库转向验证业务行为、边界条件和错误路径。</p>
             <div class="progress"><div class="fill" style="--score:0%"></div></div>
@@ -420,7 +420,7 @@
       </section>
 
       <footer>
-        <strong>当前任务：</strong>认识 REQUIRE/CHECK 的自然表达式力不从心时，该换用哪类断言（Matcher / 异常 / 浮点）。
+        <strong>下一个任务：</strong>从"会用 Catch2 API"转向"怎么给自己的代码设计有价值的测试"——验证业务行为、边界条件与错误路径。
       </footer>
     </main>
   </body>

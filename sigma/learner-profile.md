@@ -17,7 +17,7 @@ Updated: 2026-07-18 Asia/Shanghai
 ## Mastered Topics
 | Topic | Concepts Mastered | Date | Key Strengths | Persistent Gaps |
 |-------|-------------------|------|---------------|-----------------|
-| Catch2 library | 6 / 11 | 2026-07-18 | failure attribution; CMake targets (WithMain vs Catch2); self-registration model; REQUIRE/CHECK control flow; SECTION execution tree; tag filters (single / `[a][b]` / `[a],[b]` / `[a]~[b]`) | concept 3 "why namespace scope" recall shaky (1d re-test); concept 6 fresh (1d); exhaustive-enumeration habit still fragile |
+| Catch2 library | 7 / 11 | 2026-07-19 | failure attribution; CMake targets; self-registration model; REQUIRE/CHECK control flow; SECTION execution tree; tag filters; floating-point (== unreliable + Approx + tolerance math); matchers (REQUIRE_THAT + combinators + diagnostic value); exception assertions (REQUIRE_THROWS_AS family + custom types) | concepts 8-11 pending; exhaustive-enumeration habit still fragile; under-confidence persists (rated solid concept-7 work "Shaky") |
 
 ## Metacognition
-- Self-assessment accuracy: well-calibrated, slightly under-confident. Accurately flags forgotten items. No fluency illusion observed across this session.
+- Self-assessment accuracy: well-calibrated on RECALL (accurately flags forgotten items), but consistently UNDER-confident on overall MASTERY. Concept 7: rated "Shaky" despite one-shot practice passes + self-driven transfer + self-correction of a logic bug + boundary-probing questions. Pattern strengthened across sessions. Rule: do NOT use self-rating as a mastery gate — behavioral evidence (practice + transfer + self-correction) overrides self-report. No fluency illusion observed.
