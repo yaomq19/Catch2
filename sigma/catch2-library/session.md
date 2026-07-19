@@ -5,18 +5,18 @@
 - Language: zh
 - Started: 2026-06-30 Asia/Shanghai
 - Goal: Learn practical Catch2 usage first, then read the internal implementation.
-- Current concept: Matchers, exceptions, and floating-point assertions
+- Current concept: 8 (Designing useful tests) — clamp probe posed; learner deepening concept 5 (SECTION execution) first before engaging
 
 ## Concept Map
 | # | Concept | Prerequisites | Status | Score | Last Reviewed | Review Interval |
 |---|---------|---------------|--------|-------|---------------|-----------------|
-| 1 | Test intent and failure attribution | - | mastered | 90% | 2026-07-18 | 2d |
-| 2 | Minimal Catch2 executable and CMake targets | 1 | mastered | 90% | 2026-07-18 | 2d |
+| 1 | Test intent and failure attribution | - | mastered | 90% | 2026-07-20 | 4d |
+| 2 | Minimal Catch2 executable and CMake targets | 1 | mastered | 90% | 2026-07-20 | 4d |
 | 3 | TEST_CASE and self-registration model | 2 | mastered | 92% | 2026-07-19 | 2d |
-| 4 | REQUIRE, CHECK, and assertion control flow | 3 | mastered | 90% | 2026-07-18 | 2d |
-| 5 | SECTION as an execution tree | 3, 4 | mastered | 90% | 2026-07-18 | 2d |
+| 4 | REQUIRE, CHECK, and assertion control flow | 3 | mastered | 90% | 2026-07-20 | 4d |
+| 5 | SECTION as an execution tree | 3, 4 | mastered | 92% | 2026-07-20 | 4d |
 | 6 | Tags, filters, and command-line selection | 3 | mastered | 90% | 2026-07-19 | 2d |
-| 7 | Matchers, exceptions, and floating-point assertions | 4 | mastered | 88% | 2026-07-19 | 1d |
+| 7 | Matchers, exceptions, and floating-point assertions | 4 | mastered | 88% | 2026-07-20 | 2d |
 | 8 | Designing useful tests for own code | 1, 4, 5 | not-started | - | - | - |
 | 9 | Custom main and Catch::Session | 2, 6 | not-started | - | - | - |
 | 10 | Source tour: macros, registry, run context, reporters | 3, 4, 9 | not-started | - | - | - |
@@ -114,3 +114,10 @@
 - [2026-07-19 00:00 Asia/Shanghai] Concept 7 matchers sub-topic: introduced via REQUIRE_THAT + ContainsSubstring, contrasted with imperative `res.contains(...)`. Learner identified the core value (richer failure diagnostics) unprompted. Showed combinators (&& || !). Practice: learner wrote `CHECK_THAT(rs, StartsWith("Hi") && EndsWith("!"))` — correct; chose CHECK_THAT over REQUIRE_THAT (valid, mirrors REQUIRE/CHECK control flow from concept 4). Matchers sub-topic MASTERED (2/3 of concept 7). Next: exceptions (REQUIRE_THROWS_AS / REQUIRE_NOTHROW).
 - [2026-07-19 00:00 Asia/Shanghai] Concept 7 exceptions sub-topic: learner's macro sketch (call + exception type) was structurally correct; used REQUIRE_THROWS_AS + std::runtime_error correctly; minor fix — params must be concrete trigger values (divide(1,0) not divide(a,b)). Exceptions MASTERED. CONCEPT 7 FULLY MASTERED (3/3). Score 88%, review interval 1d.
 - [2026-07-19 00:00 Asia/Shanghai] Concept 7 self-assessment: learner rated "Shaky". Rubric = Mostly-there-to-Solid (independent verification, transfer to 0.5/0.25, self-correction OR->AND, one-shot matcher/exception practice, boundary-probing questions). CALIBRATION GAP confirmed — under-confidence pattern (already in profile). Reassured with concrete evidence; learner then asked 3 boundary questions (Approx float/double; matchers only string?; custom exception types) — exactly the questions that contradict "Shaky". After答疑 learner confirmed "通了". Marked mastered despite low self-rating; behavioral evidence overrides self-report.
+
+- [2026-07-20 Asia/Shanghai] Resumed. SR on 5 due concepts (1,2,4,5,7).
+- [2026-07-20 Asia/Shanghai] SR c1 PASS (suspects own expectation not std::vector) 2d->4d. c4 PASS but axis-fix: mapping right (REQUIRE on prereqs, CHECK on dependent); doubt "REQUIRE breaks independence" relocated via counter-example (CHECK on prereq -> downstream runs on broken state -> crash/cascading failures); learner articulated "REQUIRE prevents a crash" (ptr-deref case) 2d->4d. c5 PASS (SECTION chosen; predicted fresh-per-path size 0 + no sibling inheritance; count error 3-vs-2 = counted probe; "继承" refined to "setup re-run fresh per path, not sibling inheritance") 2d->4d. c7 PASS (FP: denominator power-of-2 -> exact -> == reliable) 1d->2d. c2 PASS at concept level (Catch2WithMain chosen right x2) but CMake SYNTAX decayed AGAIN in recall (no 3 REQUIRED / no source file in add_executable / singular target_link_library / no PRIVATE / commas) — recurring procedural soft spot (echoes #2/#3); learner declined syntax drill ("不重要"), deferred to concept 9 which re-touches CMake 2d->4d.
+- [2026-07-20 Asia/Shanghai] Concept 5 DEEPENED (learner-driven, c8 not yet engaged): (a) single SECTION ≈ no SECTION in RESULT, != in COST (probe re-runs setup -> setup 2x vs 1x), pointless in INTENT (SECTION exists for >=2 paths from shared setup). (b) Learner correctly traced one-SECTION + trailing CHECK: 2 invocations; trailing CHECK runs on BOTH invocations INCLUDING the probe (key insight most miss — trailing code is outside any section so runs every call); setup constructs 2x; trailing CHECK executes 2x both pass. Pose follow-up: swap trailing CHECK to s.size()==0 -> predict per-run (run1 FAIL size1!=0, run2 PASS size0==0) to reveal path-dependence smell (same line, opposite results across runs). Concept 5 score 90% -> 92%, mastery reinforcing strongly via self-driven execution tracing.
+- [2026-07-20 Asia/Shanghai] Concept 8 NOT yet started: posed clamp(x,lo,hi) "which inputs would you test?" probe to diagnose test-design intuition; learner diverted to SECTION-execution deepening first. Will re-pose when learner signals ready.
+- [2026-07-20 Asia/Shanghai] Concept 5 path-dependence follow-up PASSED (3/3): predicted CHECK(s.size()==0) -> run1 FAIL (size1!=0 after push), run2/probe PASS (size0==0, section skipped), overall FAIL. Path-dependence smell internalized: one trailing assertion line yields opposite results across runs because state differs by which section ran. FIX locked: state-dependent assertions belong INSIDE the section that establishes that state, not as trailing post-section checks. Concept 5 execution model fully consolidated via 3 self-driven questions (single-section equivalence / trailing-runs-on-probe / path-dependence). Score held 92%. Offering choice: return to concept 8 (clamp probe still open) or continue SECTION questions.
+- [2026-07-20 Asia/Shanghai] SESSION PAUSED (learner: "今天就学到这里"). State: 7/11 mastered; concept 5 deeply consolidated today via 3 self-driven追问 (score 90%->92%); concept 8 clamp probe OPEN (posed but learner diverted to SECTION deepening, not yet engaged); CMake API syntax soft spot flagged (recurring, deferred to concept 9). SR intervals after today: c1,c2,c4,c5 @ 4d (next review ~2026-07-24), c7 @ 2d (~2026-07-22), c3,c6 @ 2d (~2026-07-21). NEXT SESSION: resume -> SR on due concepts -> re-pose concept 8 clamp probe ("how do you pick which inputs to test for clamp(x,lo,hi)?").

@@ -168,7 +168,7 @@
   <body>
     <main>
       <h1><span class="gradient">Catch2</span> 阶段小结</h1>
-      <p class="subtitle">7 / 11 概念已掌握（64%）。本次（2026-07-19）复习概念 3、6 + 攻克概念 7（浮点 / Matcher / 异常断言）。</p>
+      <p class="subtitle">7 / 11 概念已掌握（64%）。本次（2026-07-20）5 个概念间隔复习全过 + 概念 5（SECTION 执行树）经三个自驱追问深度坐实。</p>
 
       <div class="stats">
         <div class="card">
@@ -181,36 +181,36 @@
         </div>
         <div class="card">
           <div class="value">10 / 10</div>
-          <div class="label">误区已修正（本次 +2）</div>
+          <div class="label">误区已修正</div>
         </div>
         <div class="card">
-          <div class="value">5</div>
-          <div class="label">明日到期复查</div>
+          <div class="value">5 / 5</div>
+          <div class="label">本次复习通过</div>
         </div>
       </div>
 
       <section class="card">
         <h2>概念掌握</h2>
 
-        <div class="row"><span class="name">1. 测试意图与失败归因 <span class="tag due">明日复查</span></span><span class="pct">90%</span></div>
+        <div class="row"><span class="name">1. 测试意图与失败归因</span><span class="pct">90% · 4d</span></div>
         <div class="bar"><div class="fill" style="--score:90%"></div></div>
 
-        <div class="row"><span class="name">2. 最小可执行程序与 CMake 目标 <span class="tag due">明日复查</span></span><span class="pct">90%</span></div>
+        <div class="row"><span class="name">2. 最小可执行程序与 CMake 目标 <span class="tag due">语法待巩固</span></span><span class="pct">90% · 4d</span></div>
         <div class="bar"><div class="fill" style="--score:90%"></div></div>
 
-        <div class="row"><span class="name">3. TEST_CASE 与自注册</span><span class="pct">92%</span></div>
+        <div class="row"><span class="name">3. TEST_CASE 与自注册</span><span class="pct">92% · 2d</span></div>
         <div class="bar"><div class="fill" style="--score:92%"></div></div>
 
-        <div class="row"><span class="name">4. REQUIRE / CHECK 控制流 <span class="tag due">明日复查</span></span><span class="pct">90%</span></div>
+        <div class="row"><span class="name">4. REQUIRE / CHECK 控制流</span><span class="pct">90% · 4d</span></div>
         <div class="bar"><div class="fill" style="--score:90%"></div></div>
 
-        <div class="row"><span class="name">5. SECTION 执行树 <span class="tag due">明日复查</span></span><span class="pct">90%</span></div>
+        <div class="row"><span class="name">5. SECTION 执行树 <span class="tag new">本次深度坐实</span></span><span class="pct">92% · 4d</span></div>
+        <div class="bar"><div class="fill" style="--score:92%"></div></div>
+
+        <div class="row"><span class="name">6. 标签 / 过滤 / 命令行</span><span class="pct">90% · 2d</span></div>
         <div class="bar"><div class="fill" style="--score:90%"></div></div>
 
-        <div class="row"><span class="name">6. 标签 / 过滤 / 命令行</span><span class="pct">90%</span></div>
-        <div class="bar"><div class="fill" style="--score:90%"></div></div>
-
-        <div class="row"><span class="name">7. Matcher / 异常 / 浮点 <span class="tag new">本次新掌握</span> <span class="tag due">明日复查</span></span><span class="pct">88%</span></div>
+        <div class="row"><span class="name">7. Matcher / 异常 / 浮点</span><span class="pct">88% · 2d</span></div>
         <div class="bar"><div class="fill" style="--score:88%"></div></div>
 
         <div class="row"><span class="name">8. 给自己的代码设计测试（下一个）</span><span class="pct">0%</span></div>
@@ -218,38 +218,44 @@
       </section>
 
       <section class="card">
-        <h2>本次回顾（2026-07-19）</h2>
+        <h2>本次回顾（2026-07-20）</h2>
         <ul>
-          <li><strong>间隔复习</strong>：概念 3（AutoReg 作用域）独立裸考通过，间隔 1d → 2d；概念 6（tag 过滤）干净逐项枚举 walkthrough 通过，间隔 1d → 2d。</li>
-          <li><strong>浮点子题</strong>：误区 #9 —— 一度认为"0.1 在 IEEE 754 下可精确表示"；自己跑 <code>print(f"{0.1:.20f}")</code> 看到 <code>0.10000000000000000555</code> 后信念崩塌；再迁移推出"分母是 2 的幂 → 精确"，<code>==</code> 不可靠 → 容差 → Approx。</li>
-          <li><strong>容差公式</strong>：误区 #10 —— 把 <code>a &gt;= b-eps || a &lt;= b+eps</code> 写成 OR；代入 a=100, b=0 自己发现"判相等"，自纠为 <code>&amp;&amp;</code>（等价 <code>abs(a-b) &lt;= eps</code>）。</li>
-          <li><strong>Matcher</strong>：一语命中核心价值"失败诊断更丰富"；组合 <code>StartsWith &amp;&amp; EndsWith</code> 一次过。</li>
-          <li><strong>异常</strong>：宏结构（调用 + 异常类型）设想正确，<code>REQUIRE_THROWS_AS</code> 用对，自定义异常类型可用。</li>
+          <li><strong>间隔复习 5/5 全过</strong>：概念 1（失败归因，先怀疑自己期望）、4、5、7（浮点"分母是 2 的幂 → 精确"）独立裸考通过；概念 2 目标选择对（<code>Catch2WithMain</code>），但 CMake 语法又垮（见"软肋"）。</li>
+          <li><strong>概念 4 轴校准</strong>：映射本对（前置用 REQUIRE、依赖项用 CHECK），但怀疑"REQUIRE 让两行不独立"——把判定轴从"兄弟之间是否独立"纠正为"<strong>后面有没有东西依赖它</strong>"。反例：前置若用 CHECK 失败，下游断言在已坏状态上跑 → 崩溃 / 误导性连锁失败。</li>
+          <li><strong>概念 5 深度坐实</strong>（三个自驱追问）：① 单 section ≈ 无 section（结果等价、机制不等价——探测会多跑一次 setup、语义上毫无意义）；② <strong>section 之外的代码每次调用都跑，含探测那次</strong>（多数人以为"section 没进，后面也不跑"——错）；③ <strong>路径依赖</strong>：依赖共享状态的 trailing 断言，同一行两次运行给出相反结果 → 坏味道，应搬进建立该状态的 section。</li>
         </ul>
       </section>
 
       <section class="card">
         <h2>关键洞察</h2>
         <ul>
-          <li>浮点数从"存放"那一刻起就是近似值（分母非 2 的幂 → 二进制无限循环 → 截断），<code>==</code> 因此不可靠；用容差 <code>abs(a-b) &lt;= eps</code> 或 Catch2 的 <code>Approx</code>。</li>
-          <li>Matcher 的价值在<strong>语义化失败诊断</strong>（实际值 + 匹配意图 + 期望全摆出来），且可组合 <code>&amp;&amp; || !</code>。</li>
-          <li>"a 在 [lo, hi] 区间内"是 <strong>AND</strong>（两个边界同时满足），不是 OR。</li>
-          <li>测试异常时，调用参数必须是<strong>能触发该异常的具体值</strong>。</li>
+          <li><strong>REQUIRE vs CHECK 的判定轴</strong>：不是"这些断言之间是否独立"，而是"<strong>这行后面有没有断言 / 代码依赖它通过</strong>"。有 → REQUIRE（保护下游不在坏状态上跑）；无 → CHECK（收集所有失败）。</li>
+          <li><strong>SECTION 执行模型</strong>：每个叶子 section 从共享 setup 的<strong>新鲜副本</strong>出发，兄弟 section 互相独立、互不可见；路径数 = section 个数（外加一次探测调用）。</li>
+          <li><strong>路径依赖坏味道</strong>：依赖共享状态的断言必须住进建立该状态的 section，否则其真假随路径漂移、等于没在断言一件确定的事。</li>
+          <li><strong>SECTION 使用前提</strong>：≥2 条路径共享同一段 setup 才值得用；单路径直接写平铺。</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>待办 / 软肋</h2>
+        <ul>
+          <li><strong>概念 8 未开始</strong>：已抛 <code>clamp(x, lo, hi)</code> 探针（"你会怎么挑要测的输入？"），下次接着答。</li>
+          <li><strong>CMake API 语法是软肋</strong>（非概念）：<code>3 REQUIRED</code>、<code>add_executable</code> 源文件、复数 <code>target_link_libraries</code>、<code>PRIVATE</code>、空格不用逗号——已第 3+ 次在回忆中垮。概念 9（自定义 main）会再碰 CMake，那时巩固。</li>
         </ul>
       </section>
 
       <section class="card">
         <h2>元认知</h2>
         <ul>
-          <li><strong>持续低估自己</strong>：概念 7 自评 "Shaky"，但实际是一次性练习通过 + 自驱迁移 + 自纠逻辑 bug + 主动追问边界——属于 Mostly-there 偏 Solid。判断掌握看<strong>能不能做出来</strong>，别信"踏不踏实"。</li>
-          <li><strong>诚实依旧</strong>：会主动说"忘了""不懂"，无流利度幻觉。这种诚实值钱，但别让它拖低自我评估。</li>
+          <li><strong>持续低估自己</strong>：概念 5 这次用三个自发追问把执行模型彻底拆透，实打实超过自评水平。判断掌握看<strong>能不能做出来 + 能不能迁移 + 能不能自纠</strong>，别信"踏不踏实"。</li>
+          <li><strong>自驱深度是强项</strong>：主动追问机制与边界（单 section 等效、trailing 在探测也跑、路径依赖），这种追问比按部就班更能坐实掌握——该鼓励，顺其自然后轻拉回路线图。</li>
         </ul>
       </section>
 
       <div class="callout">
-        <strong>⏸ 已暂停（2026-07-19）。</strong> 下次继续：<code>/sigma --resume</code> 或 <code>/sigma continue</code>。
-        <br>从<strong>概念 8</strong>（给自己的代码设计有价值的测试）开始。
-        <br><strong>明日（7-20）到期复查</strong>：概念 1、2、4、5、7。概念 3、6 后天（7-21）到期。
+        <strong>⏸ 已暂停（2026-07-20）。</strong> 下次继续：<code>/sigma --resume</code> 或 <code>/sigma continue</code>。
+        <br>从<strong>概念 8</strong>（给自己的代码设计有价值的测试）的 <code>clamp</code> 探针开始。
+        <br><strong>到期复查</strong>：概念 3、6 ~7-21；概念 7 ~7-22；概念 1、2、4、5 ~7-24。
       </div>
     </main>
   </body>
