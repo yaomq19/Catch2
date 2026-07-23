@@ -5,18 +5,18 @@
 - Language: zh
 - Started: 2026-06-30 Asia/Shanghai
 - Goal: Learn practical Catch2 usage first, then read the internal implementation.
-- Current concept: 8 (Designing useful tests) — clamp probe posed; learner deepening concept 5 (SECTION execution) first before engaging
+- Current concept: 8 (Designing useful tests) — SR c3/c6/c7 all passed (2026-07-23); re-posing clamp(x,lo,hi) test-design probe
 
 ## Concept Map
 | # | Concept | Prerequisites | Status | Score | Last Reviewed | Review Interval |
 |---|---------|---------------|--------|-------|---------------|-----------------|
 | 1 | Test intent and failure attribution | - | mastered | 90% | 2026-07-20 | 4d |
 | 2 | Minimal Catch2 executable and CMake targets | 1 | mastered | 90% | 2026-07-20 | 4d |
-| 3 | TEST_CASE and self-registration model | 2 | mastered | 92% | 2026-07-19 | 2d |
+| 3 | TEST_CASE and self-registration model | 2 | mastered | 92% | 2026-07-23 | 4d |
 | 4 | REQUIRE, CHECK, and assertion control flow | 3 | mastered | 90% | 2026-07-20 | 4d |
 | 5 | SECTION as an execution tree | 3, 4 | mastered | 92% | 2026-07-20 | 4d |
-| 6 | Tags, filters, and command-line selection | 3 | mastered | 90% | 2026-07-19 | 2d |
-| 7 | Matchers, exceptions, and floating-point assertions | 4 | mastered | 88% | 2026-07-20 | 2d |
+| 6 | Tags, filters, and command-line selection | 3 | mastered | 90% | 2026-07-23 | 4d |
+| 7 | Matchers, exceptions, and floating-point assertions | 4 | mastered | 88% | 2026-07-23 | 4d |
 | 8 | Designing useful tests for own code | 1, 4, 5 | not-started | - | - | - |
 | 9 | Custom main and Catch::Session | 2, 6 | not-started | - | - | - |
 | 10 | Source tour: macros, registry, run context, reporters | 3, 4, 9 | not-started | - | - | - |
@@ -121,3 +121,9 @@
 - [2026-07-20 Asia/Shanghai] Concept 8 NOT yet started: posed clamp(x,lo,hi) "which inputs would you test?" probe to diagnose test-design intuition; learner diverted to SECTION-execution deepening first. Will re-pose when learner signals ready.
 - [2026-07-20 Asia/Shanghai] Concept 5 path-dependence follow-up PASSED (3/3): predicted CHECK(s.size()==0) -> run1 FAIL (size1!=0 after push), run2/probe PASS (size0==0, section skipped), overall FAIL. Path-dependence smell internalized: one trailing assertion line yields opposite results across runs because state differs by which section ran. FIX locked: state-dependent assertions belong INSIDE the section that establishes that state, not as trailing post-section checks. Concept 5 execution model fully consolidated via 3 self-driven questions (single-section equivalence / trailing-runs-on-probe / path-dependence). Score held 92%. Offering choice: return to concept 8 (clamp probe still open) or continue SECTION questions.
 - [2026-07-20 Asia/Shanghai] SESSION PAUSED (learner: "今天就学到这里"). State: 7/11 mastered; concept 5 deeply consolidated today via 3 self-driven追问 (score 90%->92%); concept 8 clamp probe OPEN (posed but learner diverted to SECTION deepening, not yet engaged); CMake API syntax soft spot flagged (recurring, deferred to concept 9). SR intervals after today: c1,c2,c4,c5 @ 4d (next review ~2026-07-24), c7 @ 2d (~2026-07-22), c3,c6 @ 2d (~2026-07-21). NEXT SESSION: resume -> SR on due concepts -> re-pose concept 8 clamp probe ("how do you pick which inputs to test for clamp(x,lo,hi)?").
+
+- [2026-07-23 Asia/Shanghai] Resumed. SR on 3 due concepts (c3, c6, c7); c1/c2/c4/c5 not yet due (next ~2026-07-24).
+- [2026-07-23 Asia/Shanghai] SR c3 PASS: reconstructed chicken-and-egg (function never auto-runs so registration can't be inside it) AND proactively named "constructed before main" (the noun missing last SR). Interval 2d -> 4d, Last Reviewed 2026-07-23.
+- [2026-07-23 Asia/Shanghai] SR c6 PASS: filter `[net][tcp],[db]~[slow]` over T1[net][tcp] T2[net][udp] T3[db][slow] T4[db][auth] -> clean exhaustive T1..T4 walkthrough; run set {T1,T4}; ~-exclusion trap on T3 (db but slow -> excluded from right group) handled; within-group AND articulated explicitly ("tcp 和 net 同时出现"). Enumeration habit (#8) consolidating (3rd clean run). Interval 2d -> 4d, Last Reviewed 2026-07-23.
+- [2026-07-23 Asia/Shanghai] SR c7 PASS (application-level): tolerance counter-example a=10000,b=1,eps=0.01 -> `10000>=0.99` true -> OR judges them "equal" (absurd). Mechanism articulation ("why OR degrades to near-always-true") was shallow (restated conclusion); learner signaled "已经懂了，继续" — accepted per profile (behavioral evidence overrides self-report; well-calibrated metacognition). Interval 2d -> 4d, Last Reviewed 2026-07-23. Did NOT force the mechanism drill; noted for next c7 review.
+- [2026-07-23 Asia/Shanghai] All SR passed. Re-posing concept 8 clamp(x,lo,hi) test-design probe to diagnose test-design intuition.
