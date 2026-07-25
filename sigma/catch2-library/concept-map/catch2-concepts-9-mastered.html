@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catch2 概念图：9/11 已掌握</title>
+    <link rel="stylesheet" href="https://esm.sh/@excalidraw/excalidraw@0.18.0/dist/dev/index.css" />
+    <script>
+      window.EXCALIDRAW_ASSET_PATH = "https://esm.sh/@excalidraw/excalidraw@0.18.0/dist/prod/";
+    </script>
+    <script type="importmap">
+      { "imports": { "react": "https://esm.sh/react@19.0.0", "react/jsx-runtime": "https://esm.sh/react@19.0.0/jsx-runtime", "react-dom": "https://esm.sh/react-dom@19.0.0", "react-dom/client": "https://esm.sh/react-dom@19.0.0/client" } }
+    </script>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body, #app { height: 100%; width: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module">
+      import React from "https://esm.sh/react@19.0.0";
+      import { createRoot } from "https://esm.sh/react-dom@19.0.0/client";
+      import * as ExcalidrawLib from "https://esm.sh/@excalidraw/excalidraw@0.18.0/dist/dev/index.js?external=react,react-dom";
+
+      const { Excalidraw, convertToExcalidrawElements } = ExcalidrawLib;
+      const elementsData = [
+        { type: "text", x: 350, y: 10, text: "Catch2 学习概念图（9 / 11 已掌握）", fontSize: 28, fontFamily: 2, width: 420, textAlign: "center", strokeColor: "#212529" },
+
+        { type: "rectangle", x: 390, y: 70, width: 340, height: 70, backgroundColor: "#a5d8ff", strokeColor: "#1971c2", roundness: { type: 3 } },
+        { type: "text", x: 430, y: 92, text: "测试意图与失败归因\n（从期望与被测逻辑先查）", fontSize: 18, fontFamily: 2, width: 260, textAlign: "center", strokeColor: "#212529" },
+
+        { type: "rectangle", x: 100, y: 200, width: 240, height: 78, backgroundColor: "#b2f2bb", strokeColor: "#2f9e44", roundness: { type: 3 } },
+        { type: "text", x: 125, y: 220, text: "最小可执行程序\nCMake 目标选择", fontSize: 18, fontFamily: 2, width: 190, textAlign: "center", strokeColor: "#212529" },
+        { type: "rectangle", x: 400, y: 200, width: 240, height: 78, backgroundColor: "#b2f2bb", strokeColor: "#2f9e44", roundness: { type: 3 } },
+        { type: "text", x: 425, y: 220, text: "TEST_CASE 与\n自注册模型", fontSize: 18, fontFamily: 2, width: 190, textAlign: "center", strokeColor: "#212529" },
+        { type: "rectangle", x: 700, y: 200, width: 240, height: 78, backgroundColor: "#b2f2bb", strokeColor: "#2f9e44", roundness: { type: 3 } },
+        { type: "text", x: 725, y: 220, text: "REQUIRE / CHECK\n控制流", fontSize: 18, fontFamily: 2, width: 190, textAlign: "center", strokeColor: "#212529" },
+
+        { type: "rectangle", x: 40, y: 360, width: 230, height: 78, backgroundColor: "#b2f2bb", strokeColor: "#2f9e44", roundness: { type: 3 } },
+        { type: "text", x: 60, y: 380, text: "SECTION\n执行树与隔离", fontSize: 18, fontFamily: 2, width: 190, textAlign: "center", strokeColor: "#212529" },
+        { type: "rectangle", x: 310, y: 360, width: 230, height: 78, backgroundColor: "#b2f2bb", strokeColor: "#2f9e44", roundness: { type: 3 } },
+        { type: "text", x: 330, y: 380, text: "标签、过滤\n与命令行选择", fontSize: 18, fontFamily: 2, width: 190, textAlign: "center", strokeColor: "#212529" },
+        { type: "rectangle", x: 580, y: 360, width: 230, height: 78, backgroundColor: "#b2f2bb", strokeColor: "#2f9e44", roundness: { type: 3 } },
+        { type: "text", x: 600, y: 380, text: "Matcher、异常\n与浮点断言", fontSize: 18, fontFamily: 2, width: 190, textAlign: "center", strokeColor: "#212529" },
+        { type: "rectangle", x: 850, y: 360, width: 230, height: 78, backgroundColor: "#b2f2bb", strokeColor: "#2f9e44", roundness: { type: 3 } },
+        { type: "text", x: 870, y: 380, text: "测试设计\n分区、边界、契约", fontSize: 18, fontFamily: 2, width: 190, textAlign: "center", strokeColor: "#212529" },
+
+        { type: "rectangle", x: 310, y: 520, width: 300, height: 88, backgroundColor: "#b2f2bb", strokeColor: "#2f9e44", roundness: { type: 3 } },
+        { type: "text", x: 340, y: 542, text: "自定义 main + Catch::Session\n启动控制、退出码、扩展 CLI", fontSize: 18, fontFamily: 2, width: 240, textAlign: "center", strokeColor: "#212529" },
+        { type: "rectangle", x: 690, y: 520, width: 300, height: 88, backgroundColor: "#ffec99", strokeColor: "#f08c00", roundness: { type: 3 } },
+        { type: "text", x: 720, y: 543, text: "10. 源码导览（当前）\n宏、注册表、运行上下文、报告器", fontSize: 18, fontFamily: 2, width: 240, textAlign: "center", strokeColor: "#212529" },
+        { type: "rectangle", x: 690, y: 680, width: 300, height: 76, backgroundColor: "#e9ecef", strokeColor: "#495057", roundness: { type: 3 } },
+        { type: "text", x: 720, y: 700, text: "11. 扩展点（待学习）\n监听器、报告器、生成器、benchmark", fontSize: 17, fontFamily: 2, width: 240, textAlign: "center", strokeColor: "#212529" },
+
+        { type: "arrow", x: 560, y: 140, width: -340, height: 60, strokeColor: "#495057" },
+        { type: "arrow", x: 560, y: 140, width: -40, height: 60, strokeColor: "#495057" },
+        { type: "arrow", x: 560, y: 140, width: 260, height: 60, strokeColor: "#495057" },
+        { type: "arrow", x: 220, y: 278, width: -65, height: 82, strokeColor: "#495057" },
+        { type: "arrow", x: 520, y: 278, width: -95, height: 82, strokeColor: "#495057" },
+        { type: "arrow", x: 820, y: 278, width: -125, height: 82, strokeColor: "#495057" },
+        { type: "arrow", x: 820, y: 278, width: 145, height: 82, strokeColor: "#495057" },
+        { type: "arrow", x: 220, y: 278, width: 240, height: 242, strokeColor: "#495057" },
+        { type: "arrow", x: 425, y: 438, width: 35, height: 82, strokeColor: "#495057" },
+        { type: "arrow", x: 820, y: 278, width: 20, height: 242, strokeColor: "#495057" },
+        { type: "arrow", x: 610, y: 564, width: 80, height: 0, strokeColor: "#7048e8", strokeWidth: 2 },
+        { type: "arrow", x: 840, y: 608, width: 0, height: 72, strokeColor: "#495057" }
+      ];
+      const elements = convertToExcalidrawElements(elementsData);
+      function App() {
+        return React.createElement("div", { style: { height: "100%", width: "100%" } }, React.createElement(Excalidraw, { initialData: { elements, appState: { viewBackgroundColor: "#ffffff" }, scrollToContent: true }, langCode: "en" }));
+      }
+      createRoot(document.getElementById("app")).render(React.createElement(App));
+    </script>
+  </body>
+</html>

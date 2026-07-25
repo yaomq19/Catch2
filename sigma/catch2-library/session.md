@@ -5,20 +5,20 @@
 - Language: zh
 - Started: 2026-06-30 Asia/Shanghai
 - Goal: Learn practical Catch2 usage first, then read the internal implementation.
-- Current concept: 9 (Custom main and Catch::Session) — concept 8 MASTERED 2026-07-23 (88%); 8/11 done
+- Current concept: 10 (Source tour: macros, registry, run context, reporters) — concept 9 MASTERED 2026-07-25 (92%); 9/11 done
 
 ## Concept Map
 | # | Concept | Prerequisites | Status | Score | Last Reviewed | Review Interval |
 |---|---------|---------------|--------|-------|---------------|-----------------|
-| 1 | Test intent and failure attribution | - | mastered | 90% | 2026-07-20 | 4d |
-| 2 | Minimal Catch2 executable and CMake targets | 1 | mastered | 90% | 2026-07-20 | 4d |
+| 1 | Test intent and failure attribution | - | mastered | 90% | 2026-07-24 | 8d |
+| 2 | Minimal Catch2 executable and CMake targets | 1 | mastered | 90% | 2026-07-24 | 4d |
 | 3 | TEST_CASE and self-registration model | 2 | mastered | 92% | 2026-07-23 | 4d |
-| 4 | REQUIRE, CHECK, and assertion control flow | 3 | mastered | 90% | 2026-07-20 | 4d |
-| 5 | SECTION as an execution tree | 3, 4 | mastered | 92% | 2026-07-20 | 4d |
+| 4 | REQUIRE, CHECK, and assertion control flow | 3 | mastered | 90% | 2026-07-24 | 8d |
+| 5 | SECTION as an execution tree | 3, 4 | mastered | 92% | 2026-07-24 | 8d |
 | 6 | Tags, filters, and command-line selection | 3 | mastered | 90% | 2026-07-23 | 4d |
 | 7 | Matchers, exceptions, and floating-point assertions | 4 | mastered | 88% | 2026-07-23 | 4d |
-| 8 | Designing useful tests for own code | 1, 4, 5 | mastered | 88% | 2026-07-23 | 1d |
-| 9 | Custom main and Catch::Session | 2, 6 | not-started | - | - | - |
+| 8 | Designing useful tests for own code | 1, 4, 5 | mastered | 88% | 2026-07-24 | 2d |
+| 9 | Custom main and Catch::Session | 2, 6 | mastered | 92% | 2026-07-25 | 1d |
 | 10 | Source tour: macros, registry, run context, reporters | 3, 4, 9 | not-started | - | - | - |
 | 11 | Extension points: listeners, reporters, generators, benchmarks | 10 | not-started | - | - | - |
 
@@ -136,3 +136,21 @@
 - [2026-07-23 Asia/Shanghai] Concept 8 practice gap closure — both correct on retry: (1) cap boundary is continuous (min) -> > vs >= invisible there (direct transfer from clamp lesson); (2) precondition violations -> don't test (UB, no contract). Execution/completeness gap on first submit, NOT conceptual — both applied correctly when prompted. CONCEPT 8 MASTERED. Score 88%, review interval 1d. Demonstrated: equivalence partitioning, boundary value WITH the meta-judgment of which boundaries catch nothing, precondition contract posture, extreme-value/overflow. Two clean cross-function transfers (clamp->score_after continuity; precondition->score_after). 8/11 concepts mastered.
 - [2026-07-23 Asia/Shanghai] SESSION CHECKPOINT: 8/11 mastered (73%). Today: SR c3/c6/c7 all passed (->4d); concept 8 fully mastered via boundary-value deep-dive (incl. tutor's own twice-flawed clamp counter-example, owned honestly) + precondition contract + practice. NEXT: concept 9 (Custom main + Catch::Session) — will re-touch CMake (recurring syntax soft spot per profile).
 - [2026-07-23 Asia/Shanghai] SESSION PAUSED (learner: "暂停"). State: 8/11 mastered (73%); concept 8 done today. SR intervals after today: c1,c2,c4,c5 @ 4d (next ~2026-07-24/27 — c1,c2,c4,c5 last reviewed 07-20 @4d -> due 07-24; c3,c6,c7 just reviewed 07-23 @4d -> due 07-27); c8 @ 1d (due 07-24). NEXT SESSION: resume -> SR on due concepts (c1,c2,c4,c5,c8 due ~07-24; c3,c6,c7 due ~07-27) -> open concept 9 (Custom main + Catch::Session), expect CMake syntax soft spot to resurface. Profile + summary.html updated.
+- [2026-07-24 Asia/Shanghai] SR c8 PASS: correctly explained that clamp is behaviorally continuous at x==lo, so changing < to <= selects branches with the same observable result. Interval 1d -> 2d, Last Reviewed 2026-07-24.
+- [2026-07-24 Asia/Shanghai] SR c2 PASS (concept-level): selected Catch2::Catch2 for a custom main; after a causal prompt, correctly derived that Catch2::Catch2WithMain plus a user main produces duplicate main definitions at link time. Interval remains 4d, Last Reviewed 2026-07-24. CMake API syntax was not tested in this recall.
+- [2026-07-24 Asia/Shanghai] SR c4 PASS after counter-example: initial CHECK choice for a nullable user prerequisite was corrected by tracing the failed CHECK into user->name() dereference. Learner selected REQUIRE(user != nullptr) to stop the unsafe downstream path. Interval 4d -> 8d, Last Reviewed 2026-07-24.
+- [2026-07-24 Asia/Shanghai] SR c5 PASS: independently stated that each sibling SECTION path re-enters the TEST_CASE from the beginning and reconstructs shared setup, so no sibling state transfer occurs. Interval 4d -> 8d, Last Reviewed 2026-07-24.
+- [2026-07-24 Asia/Shanghai] SR c1 PASS after concrete reframe: for clamp_to_percent constrained to [0,100], learner correctly chose 100 for input 150, exposing the original expected value 0 as the first thing to inspect. Interval 4d -> 8d, Last Reviewed 2026-07-24. All five due reviews completed.
+- [2026-07-24 Asia/Shanghai] Concept 9 started: Custom main and Catch::Session.
+- [2026-07-24 Asia/Shanghai] Concept 9 opening probe: learner correctly identified that Catch2's default main cannot host program-specific initialization or argument handling, so a custom main is needed for a customizable startup flow. Status not-started -> in-progress; provisional score 40%.
+- [2026-07-24 Asia/Shanghai] Concept 9 delegation step: after a minimal skeleton and a semantic hint, learner completed `return session.run(argc, argv);`, identifying the call that hands command-line parsing and test execution back to Catch2. Score 40% -> 60%.
+- [2026-07-24 Asia/Shanghai] Concept 9 interleaving check PASS: selected `Catch2::Catch2` for a source file that defines its own main, explaining that `Catch2::Catch2WithMain` would provide a conflicting default main. Score 60% -> 75%.
+- [2026-07-24 Asia/Shanghai] Concept 9 custom-argument scenario: learner correctly proposed stripping the program-owned `--config` argument before delegating to Catch2, and identified the risk of a parser error or option collision. Source check confirmed the concrete behavior: `Session::run` calls `applyCommandLine` first; an unrecognized token is a command-line error and prevents test execution. Score 75% -> 85%.
+- [2026-07-24 Asia/Shanghai] Concept 9 design-choice check: chose manual stripping before `session.run`, with correct ownership reasoning — Catch2 need not see a program-only option. This is a valid simple approach; next test distinguishes it from extending Catch2's CLI when integrated help and shared parsing are desirable. Score 85% -> 88%.
+- [2026-07-24 Asia/Shanghai] Concept 9 integrated-help scenario: after clarifying that `my_tests --help` should list the custom option, learner selected extension of Catch2's CLI (B). Recognition is correct; rationale still needs an explicit mechanism before mastery check.
+- [2026-07-24 Asia/Shanghai] Concept 9 rationale recovered through a smaller ownership contrast: learner correctly stated that Catch2 does not know a manually stripped option (A), but does know an option registered into Session's CLI (B). Therefore only B can include it in Catch2-generated help and unified validation. Score 88% -> 92%; ready for self-assessment and practice.
+- [2026-07-24 Asia/Shanghai] Concept 9 self-assessment: learner chose “大致掌握”. This matches the evidence: correct startup/control-flow and CLI-ownership reasoning, but the explanation needed a scaffold. Proceeding to a compact implementation practice.
+- [2026-07-25 Asia/Shanghai] Concept 9 practice PARTIAL: CMake was fully correct (`find_package(Catch2 3 REQUIRED)`, executable target, `PRIVATE Catch2::Catch2`) and custom main order was correct (initialize, create Session, invoke run). Execution gap: discarded `session.run`'s return value and then returned 0, which would hide a failing test run from the process/CI. Retry needs only this return-code propagation fix; concept remains in-progress.
+- [2026-07-25 Asia/Shanghai] Concept 9 practice PASS: corrected the process result propagation to `return session.run(argc, argv);`. The custom main now initializes program-specific state, delegates Catch2 argument parsing and test execution, and preserves Catch2's exit status for shells and CI. CONCEPT 9 MASTERED (92%); review interval 1d. Next: source tour (concept 10).
+- [2026-07-25 Asia/Shanghai] Milestone: regenerated concept map for 9 mastered concepts at `concept-map/catch2-concepts-9-mastered.html`.
+- [2026-07-25 Asia/Shanghai] SESSION PAUSED. State: 9/11 mastered (82%); next concept is 10 (source tour). Next due review: concepts 8 and 9 on 2026-07-26; concepts 3, 6, 7 on 2026-07-27; concepts 1, 2, 4, 5 on 2026-08-01.

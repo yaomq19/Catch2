@@ -168,15 +168,15 @@
   <body>
     <main>
       <h1><span class="gradient">Catch2</span> 阶段小结</h1>
-      <p class="subtitle">8 / 11 概念已掌握（73%）。本次（2026-07-23）3 个概念间隔复习全过 + 概念 8（给自己的代码设计测试）从边界值深挖到"哪些边界其实抓不到 bug"，再到 precondition 契约姿态，完整掌握。</p>
+      <p class="subtitle">9 / 11 概念已掌握（82%）。本次（2026-07-25）完成 5 项到期复习，并掌握自定义 <code>main</code>、<code>Catch::Session</code>、退出码传递与自有命令行参数接入。</p>
 
       <div class="stats">
         <div class="card">
-          <div class="value">8 / 11</div>
+          <div class="value">9 / 11</div>
           <div class="label">已掌握概念</div>
         </div>
         <div class="card">
-          <div class="value">73%</div>
+          <div class="value">82%</div>
           <div class="label">总进度</div>
         </div>
         <div class="card">
@@ -184,7 +184,7 @@
           <div class="label">误区已修正</div>
         </div>
         <div class="card">
-          <div class="value">3 / 3</div>
+          <div class="value">5 / 5</div>
           <div class="label">本次复习通过</div>
         </div>
       </div>
@@ -192,7 +192,7 @@
       <section class="card">
         <h2>概念掌握</h2>
 
-        <div class="row"><span class="name">1. 测试意图与失败归因</span><span class="pct">90% · 4d</span></div>
+        <div class="row"><span class="name">1. 测试意图与失败归因</span><span class="pct">90% · 8d</span></div>
         <div class="bar"><div class="fill" style="--score:90%"></div></div>
 
         <div class="row"><span class="name">2. 最小可执行程序与 CMake 目标 <span class="tag due">语法待巩固</span></span><span class="pct">90% · 4d</span></div>
@@ -201,10 +201,10 @@
         <div class="row"><span class="name">3. TEST_CASE 与自注册 <span class="tag new">本次复习</span></span><span class="pct">92% · 4d</span></div>
         <div class="bar"><div class="fill" style="--score:92%"></div></div>
 
-        <div class="row"><span class="name">4. REQUIRE / CHECK 控制流</span><span class="pct">90% · 4d</span></div>
+        <div class="row"><span class="name">4. REQUIRE / CHECK 控制流</span><span class="pct">90% · 8d</span></div>
         <div class="bar"><div class="fill" style="--score:90%"></div></div>
 
-        <div class="row"><span class="name">5. SECTION 执行树</span><span class="pct">92% · 4d</span></div>
+        <div class="row"><span class="name">5. SECTION 执行树</span><span class="pct">92% · 8d</span></div>
         <div class="bar"><div class="fill" style="--score:92%"></div></div>
 
         <div class="row"><span class="name">6. 标签 / 过滤 / 命令行 <span class="tag new">本次复习</span></span><span class="pct">90% · 4d</span></div>
@@ -213,13 +213,19 @@
         <div class="row"><span class="name">7. Matcher / 异常 / 浮点 <span class="tag new">本次复习</span></span><span class="pct">88% · 4d</span></div>
         <div class="bar"><div class="fill" style="--score:88%"></div></div>
 
-        <div class="row"><span class="name">8. 给自己的代码设计测试 <span class="tag new">本次掌握</span></span><span class="pct">88% · 1d</span></div>
+        <div class="row"><span class="name">8. 给自己的代码设计测试</span><span class="pct">88% · 2d</span></div>
         <div class="bar"><div class="fill" style="--score:88%"></div></div>
+
+        <div class="row"><span class="name">9. 自定义 main 与 Catch::Session <span class="tag new">本次掌握</span></span><span class="pct">92% · 1d</span></div>
+        <div class="bar"><div class="fill" style="--score:92%"></div></div>
       </section>
 
       <section class="card">
-        <h2>本次回顾（2026-07-23）</h2>
+        <h2>本次回顾（2026-07-25）</h2>
         <ul>
+          <li><strong>间隔复习 5/5 全过</strong>：概念 1、2、4、5、8 全部通过；概念 1、4、5 的间隔升至 8d，概念 2 保持 4d。</li>
+          <li><strong>概念 9 · 自定义 main</strong>：用 <code>Catch::Session::run</code> 委托参数解析和测试运行；选择 <code>Catch2::Catch2</code> 避免第二个 main；把 <code>run</code> 的返回值传回进程，避免 CI 把失败测试视为成功。</li>
+          <li><strong>命令行参数两种接入</strong>：简单的程序参数可手动剥离后再交给 Catch2；若要进入 <code>--help</code> 并共享解析、校验和错误提示，就注册到 <code>Session</code> 的 CLI。</li>
           <li><strong>间隔复习 3/3 全过</strong>：概念 3（自注册——主动点破"main 之前构造"）、概念 6（<code>[net][tcp],[db]~[slow]</code> 全枚举干净、~-排除陷阱抓到）、概念 7（容差 OR 反例 <code>a=10000,b=1</code>）。间隔均升到 4d。</li>
           <li><strong>概念 8 · 边界值深挖</strong>：从"<code>x==lo</code> 抓什么 bug"出发，<strong>两次正确否掉导师设错的反例</strong>——clamp 在边界连续，<code>&lt;</code> 写成 <code>&lt;=</code> 在返回值上隐身（任何输入都抓不到）。对照 <code>shipping(weight)</code> 跳变函数，<code>weight==5</code> 才抓得到。</li>
           <li><strong>概念 8 · precondition 契约</strong>：把"违反前置条件抛异常"的混淆拆开——precondition 是<strong>调用者责任</strong>、违反即 <strong>UB</strong>、<strong>不测返回值</strong>；抛异常是另一种契约姿态（函数自守卫）。</li>
@@ -240,7 +246,7 @@
       <section class="card">
         <h2>待办 / 软肋</h2>
         <ul>
-          <li><strong>概念 9（下一个）</strong>：自定义 main 与 <code>Catch::Session</code>——什么时候让 Catch2 提供 main、什么时候自己接管启动流程。<strong>会再次碰到 CMake</strong>。</li>
+          <li><strong>概念 10（下一个）</strong>：源码导览——把宏、自注册、运行上下文与报告器映射到实际实现。</li>
           <li><strong>CMake API 语法是软肋</strong>（非概念）：<code>3 REQUIRED</code>、<code>add_executable</code> 源文件、复数 <code>target_link_libraries</code>、<code>PRIVATE</code>、空格不用逗号——回忆中反复垮。概念 9 自然复习，不强制刷。</li>
           <li><strong>多部分作答完整度</strong>（非概念）：核心对、但会漏掉结构化要求的子项；逐条核验每个编号要求，别把"漏写"当"不会"。</li>
         </ul>
@@ -255,9 +261,9 @@
       </section>
 
       <div class="callout">
-        <strong>⏸ 已暂停（2026-07-23）。</strong> 下次继续：<code>/sigma continue</code>。
-        <br>从<strong>概念 9</strong>（自定义 main 与 Catch::Session）开始，预计会再碰 CMake 语法。
-        <br><strong>到期复查</strong>：概念 1、2、4、5、8 ~7-24；概念 3、6、7 ~7-27。
+        <strong>⏸ 已暂停（2026-07-25）。</strong> 下次继续：<code>/sigma continue</code>。
+        <br>从<strong>概念 10</strong>（源码导览）开始。
+        <br><strong>到期复查</strong>：概念 8、9 ~7-26；概念 3、6、7 ~7-27；概念 1、2、4、5 ~8-01。
       </div>
     </main>
   </body>
